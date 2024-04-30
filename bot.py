@@ -43,7 +43,7 @@ async def get_spotify_client(state):
         print("No cached token available")
         return None
     
-    sp_oauth.cache_handler.save_token_to_cache(token_info)
+    sp_oauth.get_access_token(token_info['access_token'])
     return Spotify(auth_manager=sp_oauth, requests_timeout=10, retries=3)
 
 @dp.message(CommandStart())
